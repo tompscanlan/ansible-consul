@@ -33,6 +33,7 @@
     dest={{consul_download_folder}}
     url_username={{ consul_download_username }}
     url_password={{ consul_download_password }}
+    validate_certs=no
   register: consul_was_downloaded
   when: consul_archive_stat.stat.exists == False
 
