@@ -5,3 +5,4 @@
 - { include: dnsmasq.yml, when: consul_install_dnsmasq == true }
 - { include: consulate.yml, when: consul_install_consulate == true }
 - include: service.yml
+- { include: wan.yml, when: consul_join_wan_addrs is defined }
