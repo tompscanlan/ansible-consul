@@ -6,6 +6,7 @@
   get_url: >
     url={{consul_ui_download}}
     dest={{consul_download_folder}}
+    validate_certs=no
   register: consul_ui_was_downloaded
   when: consul_archive_ui_stat.stat.exists == False
 
@@ -64,6 +65,7 @@
     owner=root
     group=root
     mode=0755
+  when: consul_is_ui and consul_enable_nginx_config
   notify:
     - restart nginx
   when: consul_enable_nginx_config
