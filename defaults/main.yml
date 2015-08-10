@@ -75,7 +75,13 @@ consul_port_serf_lan: 8301
 consul_port_serf_wan: 8302
 consul_port_server: 8300
 
-consul_install_dnsmasq: false
 consul_install_consulate: false
+consul_install_dnsmasq: true
+
+consul_dnsmasq_version: 2.75
+consul_dnsmasq_package: dnsmasq-{{ consul_dnsmasq_version }}
+consul_dnsmasq_archive: "{{ consul_dnsmasq_package }}.tar.xz"
+consul_dnsmasq_download: http://www.thekelleys.org.uk/dnsmasq/{{ consul_dnsmasq_archive }}
+consul_dnsmasq_conf_dir: /etc/consul_dnsmasq.d
 
 consul_node_name: "{{ inventory_hostname }}"

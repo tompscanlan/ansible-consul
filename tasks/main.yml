@@ -4,5 +4,15 @@
 - { include: install-cli.yml, when: consul_install_consul_cli == true }
 - { include: dnsmasq.yml, when: consul_install_dnsmasq == true }
 - { include: consulate.yml, when: consul_install_consulate == true }
+
+- include: install-photon.yml
+  when: ansible_lsb.codename == 'Photon'
+
+- include: install-ui-photon.yml
+  when: consul_is_ui and ansible_lsb.codename == 'Photon'
+
+- include: dnsmasq-photon.yml
+  when: consul_install_dnsmasq and ansible_lsb.codename == 'Photon'
+
 - include: service.yml
 - { include: wan.yml, when: consul_join_wan_addrs is defined }
